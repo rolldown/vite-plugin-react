@@ -63,8 +63,8 @@ importers:
         specifier: ^3.0.3
         version: 3.1.0
       rolldown-vite:
-        specifier: https://pkg.pr.new/rolldown/vite@43
-        version: vite@https://pkg.pr.new/rolldown/vite@43(@types/node@20.16.10)
+        specifier: https://pkg.pr.new/rolldown/vite@f6f9fbe
+        version: vite@https://pkg.pr.new/rolldown/vite@f6f9fbe(@types/node@20.16.10)
       simple-git-hooks:
         specifier: ^2.11.1
         version: 2.11.1
@@ -112,7 +112,7 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
-      '@vitejs/plugin-react':
+      rolldown-vite-plugin-react:
         specifier: workspace:*
         version: link:../../packages/plugin-react
 
@@ -134,12 +134,12 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
-      '@vitejs/plugin-react':
-        specifier: workspace:*
-        version: link:../../packages/plugin-react
       babel-plugin-react-compiler:
         specifier: ^0.0.0-experimental-b12479e-20240926
         version: 0.0.0-experimental-b12479e-20240926
+      rolldown-vite-plugin-react:
+        specifier: workspace:*
+        version: link:../../packages/plugin-react
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -168,12 +168,12 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
-      '@vitejs/plugin-react':
-        specifier: workspace:*
-        version: link:../../packages/plugin-react
       babel-plugin-react-compiler:
         specifier: ^0.0.0-experimental-b12479e-20240926
         version: 0.0.0-experimental-b12479e-20240926
+      rolldown-vite-plugin-react:
+        specifier: workspace:*
+        version: link:../../packages/plugin-react
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -205,7 +205,7 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
-      '@vitejs/plugin-react':
+      rolldown-vite-plugin-react:
         specifier: workspace:*
         version: link:../../packages/plugin-react
 
@@ -221,7 +221,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@vitejs/plugin-react':
+      rolldown-vite-plugin-react:
         specifier: workspace:*
         version: link:../../packages/plugin-react
 
@@ -234,7 +234,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@vitejs/plugin-react':
+      rolldown-vite-plugin-react:
         specifier: workspace:*
         version: link:../../packages/plugin-react
 
@@ -262,7 +262,7 @@ importers:
       '@emotion/babel-plugin':
         specifier: ^11.12.0
         version: 11.12.0
-      '@vitejs/plugin-react':
+      rolldown-vite-plugin-react:
         specifier: workspace:*
         version: link:../../packages/plugin-react
 
@@ -275,7 +275,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@vitejs/plugin-react':
+      rolldown-vite-plugin-react:
         specifier: workspace:*
         version: link:../../packages/plugin-react
 
@@ -288,7 +288,7 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
-      '@vitejs/plugin-react':
+      rolldown-vite-plugin-react:
         specifier: workspace:*
         version: link:../../packages/plugin-react
 
@@ -306,15 +306,15 @@ importers:
         specifier: ^6.26.2
         version: 6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
-      '@vitejs/plugin-react':
-        specifier: workspace:*
-        version: link:../../packages/plugin-react
       compression:
         specifier: ^1.7.4
         version: 1.7.4
       express:
         specifier: ^4.21.0
         version: 4.21.0
+      rolldown-vite-plugin-react:
+        specifier: workspace:*
+        version: link:../../packages/plugin-react
       serve-static:
         specifier: ^1.16.2
         version: 1.16.2
@@ -4094,8 +4094,8 @@ packages:
       terser:
         optional: true
 
-  vite@https://pkg.pr.new/rolldown/vite@43:
-    resolution: {tarball: https://pkg.pr.new/rolldown/vite@43}
+  vite@https://pkg.pr.new/rolldown/vite@f6f9fbe:
+    resolution: {tarball: https://pkg.pr.new/rolldown/vite@f6f9fbe}
     version: 6.0.0-beta.3
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -8419,7 +8419,7 @@ snapshots:
       '@types/node': 20.16.10
       fsevents: 2.3.3
 
-  vite@https://pkg.pr.new/rolldown/vite@43(@types/node@20.16.10):
+  vite@https://pkg.pr.new/rolldown/vite@f6f9fbe(@types/node@20.16.10):
     dependencies:
       esbuild: 0.24.0
       postcss: 8.4.47

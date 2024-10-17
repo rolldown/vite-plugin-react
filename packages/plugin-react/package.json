@@ -41,7 +41,7 @@
     "react-refresh": "^0.14.2"
   },
   "peerDependencies": {
-    "rolldown-vite": "https://pkg.pr.new/rolldown/vite@43"
+    "rolldown-vite": "https://pkg.pr.new/rolldown/vite@f6f9fbe"
   },
   "devDependencies": {
     "unbuild": "^2.0.0"
