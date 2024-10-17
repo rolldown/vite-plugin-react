@@ -1,5 +1,5 @@
 {
-  "name": "@vitejs/plugin-react",
+  "name": "rolldown-vite-plugin-react",
   "version": "4.3.2",
   "license": "MIT",
   "author": "Evan You",
