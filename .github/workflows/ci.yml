@@ -11,6 +11,8 @@ env:
 
 on:
   push:
+    branches:
+      - using-oxc-transfomer
   pull_request:
   workflow_dispatch:
 
@@ -79,9 +81,6 @@ jobs:
 
       - name: Test build
         run: pnpm run test-build
-
-      - name: Continuous Releases
-        run: pnpx pkg-pr-new publish
 
   lint:
     if: github.repository == 'vitejs/vite-plugin-react'
