@@ -120,6 +120,7 @@ jobs:
   Continuous Releases:
     timeout-minutes: 20
     name: "Continuous Releases"
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
