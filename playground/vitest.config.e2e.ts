@@ -12,6 +12,9 @@ export default defineConfig({
   test: {
     pool: 'forks',
     include: ['./playground/**/*.spec.[tj]s'],
+    exclude: [
+      './playground/react-emotion/**/*.spec.[tj]s', // the remotion need to transformer
+    ],
     setupFiles: ['./playground/vitestSetup.ts'],
     globalSetup: ['./playground/vitestGlobalSetup.ts'],
     testTimeout: timeout,
