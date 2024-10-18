@@ -116,8 +116,7 @@ if (!isBuild) {
     )
   })
 
-  // Could not enable the js file transform by config
-  test.skip('should hmr files with "react/jsx-runtime"', async () => {
+  test('should hmr files with "react/jsx-runtime"', async () => {
     expect(await page.textContent('#state-button')).toMatch('count is: 0')
     await page.click('#state-button')
     expect(await page.textContent('#state-button')).toMatch('count is: 1')
