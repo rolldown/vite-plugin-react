@@ -1,5 +1,5 @@
 import { defineConfig } from 'rolldown-vite'
-import react from '@vitejs/plugin-react'
+import react from 'rolldown-vite-plugin-react'
 
 export default defineConfig({
   server: { port: 8907 /* Should be unique */ },

@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react'
+import react from 'rolldown-vite-plugin-react'
 import type { UserConfig } from 'rolldown-vite'
 
 const config: UserConfig = {

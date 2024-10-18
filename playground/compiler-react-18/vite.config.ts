@@ -1,5 +1,5 @@
 import { defineConfig } from 'rolldown-vite'
-import react from '@vitejs/plugin-react'
+import react from 'rolldown-vite-plugin-react'
 
 // https://gist.github.com/poteto/37c076bf112a07ba39d0e5f0645fec43
 

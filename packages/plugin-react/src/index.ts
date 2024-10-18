@@ -1,4 +1,4 @@
-import { createFilter } from 'rolldown-vite'
+import { createFilter, transformWithOxc } from 'rolldown-vite'
 import type {
   BuildOptions,
   Plugin,
@@ -32,6 +32,7 @@ export interface Options {
 const reactCompRE = /extends\s+(?:React\.)?(?:Pure)?Component/
 const refreshContentRE = /\$Refresh(?:Reg|Sig)\$\(/
 const defaultIncludeRE = /\.[tj]sx?$/
+const tsRE = /\.tsx?$/
 
 export default function viteReact(opts: Options = {}): PluginOption[] {
   // Provide default values for Rollup compat.
@@ -41,6 +42,7 @@ export default function viteReact(opts: Options = {}): PluginOption[] {
   const jsxImportRuntime = `${jsxImportSource}/jsx-runtime`
   const jsxImportDevRuntime = `${jsxImportSource}/jsx-dev-runtime`
   let skipFastRefresh = false
+  let isProduction = true
 
   // Support patterns like:
   // - import * as React from 'react';
@@ -50,24 +52,32 @@ export default function viteReact(opts: Options = {}): PluginOption[] {
 
   const viteBabel: Plugin = {
     name: 'vite:react',
-    config(config, env) {
-      const runtime = opts.jsxRuntime ?? 'automatic'
-      return {
-        oxc: {
-          jsx: {
-            runtime,
-            importSource: runtime === 'automatic' ? jsxImportSource : undefined,
-            refresh: env.command === 'serve',
-            development: env.command === 'serve',
+    config() {
+      if (opts.jsxRuntime === 'classic') {
+        return {
+          oxc: {
+            jsx: {
+              runtime: 'classic',
+            },
           },
-        },
-        // optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
+        }
+      } else {
+        return {
+          oxc: {
+            jsx: {
+              runtime: 'automatic',
+              importSource: opts.jsxImportSource,
+            },
+          },
+          // optimizeDeps: { esbuildOptions: { jsx: 'automatic' } },
+        }
       }
     },
     configResolved(config) {
       devBase = config.base
+      isProduction = config.isProduction
       skipFastRefresh =
-        config.isProduction ||
+        isProduction ||
         config.command === 'build' ||
         config.server.hmr === false
     },
@@ -90,12 +100,24 @@ export default function viteReact(opts: Options = {}): PluginOption[] {
               code.includes(jsxImportRuntime)))
 
       if (useFastRefresh) {
+        const result = await transformWithOxc(this, code, id, {
+          jsx: {
+            runtime: opts.jsxRuntime,
+            importSource:
+              opts.jsxRuntime === 'automatic' ? jsxImportSource : undefined,
+            refresh: useFastRefresh,
+            development:
+              opts.jsxRuntime === 'classic' && isJSX && !isProduction,
+          },
+          lang: !tsRE.test(filepath) ? 'jsx' : undefined,
+        })
+        code = result.code
         if (refreshContentRE.test(code)) {
           code = addRefreshWrapper(code, id)
         } else if (reactCompRE.test(code)) {
           code = addClassComponentRefreshWrapper(code, id)
         }
-        return { code }
+        return { code, map: result.map }
       }
     },
   }
